@@ -37,8 +37,15 @@
       //check if denominator is 0
       if (preg_match("/\/[0]/",$eval_expr))
       {
-        echo "Denominator can not be 0!";
-        echo "<br/>";
+        if (!preg_match("/\/[0][.]/",$eval_expr))
+        {
+          echo "Denominator can not be 0!";
+          echo "<br/>";
+        }
+        else
+        {
+          eval("\$res = $parsed_expr[0];");
+        }
       }
         
       //if denominator is not 0, then evaluate the parsed expression
